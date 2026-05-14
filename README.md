@@ -2,6 +2,8 @@
 
 Progate風スライドで Nix / nix-darwin / home-manager を学ぶ静的Webサイト。
 
+**Live**: https://bugizmyao.github.io/nix-tutorial/
+
 ## 構成
 
 ```
