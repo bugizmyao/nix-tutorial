@@ -263,6 +263,7 @@ code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0; /* grid item: allow children to shrink below their content size */
 }
 .slide-card {
   background: #fff;
@@ -271,6 +272,9 @@ code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
   box-shadow: 0 4px 16px rgba(20, 24, 60, 0.04);
   min-height: 400px;
   font-size: 1.02rem;
+  min-width: 0; /* flex item: prevent expansion from long pre/code content */
+  max-width: 100%;
+  overflow-wrap: break-word;
 }
 .slide-loading {
   color: #9ca3af;
@@ -302,9 +306,11 @@ code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
   padding: 18px 22px;
   border-radius: 10px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
   font-size: 0.92rem;
   line-height: 1.55;
   margin: 18px 0;
+  max-width: 100%;
 }
 .slide-card pre code { background: transparent; padding: 0; color: inherit; }
 .slide-card blockquote {
@@ -314,7 +320,9 @@ code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
   border-left: 4px solid #fb923c;
   color: #7c2d12;
   border-radius: 0 8px 8px 0;
+  overflow-wrap: anywhere;
 }
+.slide-card a { word-break: break-all; }
 .slide-card blockquote p { margin: 4px 0; }
 .slide-card blockquote.try {
   background: #ecfdf5;
