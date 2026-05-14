@@ -370,36 +370,182 @@ code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; }
   font-variant-numeric: tabular-nums;
 }
 
+/* ===== Table wrapper (added by lesson.js for horizontal scroll) ===== */
+.slide-card .table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 16px 0;
+}
+.slide-card .table-scroll table { margin: 0; }
+
 /* ===== Responsive ===== */
+
+/* Tablet and small laptop (〜1024px): tighten lesson layout */
+@media (max-width: 1024px) {
+  .lesson-body { grid-template-columns: 200px 1fr; }
+  .slide-area { padding: 32px 24px; }
+  .slide-card { padding: 40px 36px 32px; }
+}
+
+/* Tablet portrait & large phone (〜768px): collapse sidebar to drawer */
 @media (max-width: 768px) {
+  .container { padding: 0 16px; }
+
   .site-header { padding: 36px 0 32px; }
   .site-header h1 { font-size: 1.7rem; }
-  .overall-progress { margin-top: -20px; padding: 18px 20px; }
-  .chapter-card { padding: 14px 16px; gap: 10px; }
+  .site-header .tagline { font-size: 0.95rem; }
+  .overall-progress { margin: -20px 0 24px; padding: 18px 20px; border-radius: 12px; }
+
+  .chapter-list-section h2 { font-size: 1.2rem; margin: 24px 0 12px; }
+  .chapter-card { padding: 14px 16px; gap: 12px; grid-template-columns: 40px 1fr auto; }
+  .chapter-num { width: 36px; height: 36px; font-size: 0.95rem; }
   .chapter-info h3 { font-size: 0.98rem; }
   .chapter-info p { font-size: 0.82rem; }
+  .chapter-status { font-size: 0.78rem; }
 
+  .lesson-header-inner {
+    grid-template-columns: auto auto 1fr auto;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+  .back-link, .sidebar-toggle { font-size: 1.3rem; padding: 6px 8px; }
   .lesson-body { grid-template-columns: 1fr; }
   .sidebar {
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
+    height: 100dvh;
     width: 280px;
+    max-width: 85vw;
     z-index: 20;
     transform: translateX(-100%);
     transition: transform 0.2s ease;
     padding-top: 60px;
+    -webkit-overflow-scrolling: touch;
   }
-  .sidebar.open { transform: translateX(0); }
+  .sidebar.open { transform: translateX(0); box-shadow: 4px 0 24px rgba(0,0,0,0.15); }
   .sidebar-backdrop.open { display: block; }
   .sidebar-toggle { display: inline-block; }
   .lesson-title { font-size: 0.95rem; }
-  .lesson-progress { min-width: 90px; }
-  .slide-area { padding: 20px 16px; }
-  .slide-card { padding: 28px 22px; min-height: 360px; }
-  .slide-card h1 { font-size: 1.4rem; }
+  .lesson-progress { min-width: 80px; gap: 8px; }
+  .lesson-progress .progress-bar { min-width: 60px; }
+  .lesson-progress .progress-text { font-size: 0.78rem; }
+  .slide-area { padding: 20px 16px; gap: 16px; }
+  .slide-card { padding: 28px 22px 24px; min-height: 320px; font-size: 0.98rem; border-radius: 12px; }
+  .slide-card h1 { font-size: 1.4rem; margin-bottom: 18px; padding-bottom: 10px; }
+  .slide-card h2 { font-size: 1.15rem; margin: 22px 0 10px; }
+  .slide-card h3 { font-size: 1.02rem; margin: 18px 0 6px; }
   .slide-card pre { font-size: 0.84rem; padding: 14px 16px; }
-  .slide-nav { flex-wrap: wrap; }
-  .btn { padding: 10px 18px; font-size: 0.95rem; }
+  .slide-card blockquote { padding: 12px 16px; }
+  .slide-nav { flex-wrap: wrap; gap: 12px; padding: 0; }
+  .btn { padding: 11px 20px; font-size: 0.95rem; min-height: 44px; }
+}
+
+/* Phone (〜480px): iPhone standard sizes, tighten everything */
+@media (max-width: 480px) {
+  .container { padding: 0 14px; }
+
+  .site-header { padding: 28px 0 24px; }
+  .site-header h1 { font-size: 1.45rem; }
+  .site-header .tagline { font-size: 0.88rem; }
+  .overall-progress { padding: 14px 16px; margin-top: -16px; }
+  .progress-row { margin-bottom: 8px; }
+  .progress-text { font-size: 0.95rem; }
+
+  .chapter-card {
+    grid-template-columns: 36px 1fr;
+    grid-template-areas:
+      "num info"
+      "status status";
+    padding: 12px 14px;
+    gap: 8px 10px;
+  }
+  .chapter-num { grid-area: num; width: 32px; height: 32px; font-size: 0.9rem; }
+  .chapter-info { grid-area: info; min-width: 0; }
+  .chapter-info h3 { font-size: 0.95rem; }
+  .chapter-info p { font-size: 0.78rem; -webkit-line-clamp: 2; display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+  .chapter-status { grid-area: status; font-size: 0.76rem; text-align: right; }
+
+  .lesson-header-inner {
+    grid-template-columns: auto auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px 8px;
+    padding: 8px 12px;
+  }
+  .back-link { grid-row: 1; }
+  .sidebar-toggle { grid-row: 1; }
+  .lesson-title {
+    grid-row: 1;
+    grid-column: 3 / 4;
+    font-size: 0.9rem;
+  }
+  .lesson-progress {
+    grid-row: 2;
+    grid-column: 1 / -1;
+    min-width: 0;
+    gap: 8px;
+  }
+  .lesson-progress .progress-bar { flex: 1; }
+
+  .slide-area { padding: 14px 12px; gap: 12px; }
+  .slide-card {
+    padding: 22px 18px 20px;
+    min-height: 280px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    line-height: 1.65;
+  }
+  .slide-card h1 { font-size: 1.25rem; margin-bottom: 14px; padding-bottom: 8px; }
+  .slide-card h2 { font-size: 1.08rem; margin: 18px 0 8px; }
+  .slide-card h3 { font-size: 0.98rem; margin: 14px 0 6px; }
+  .slide-card p { margin: 10px 0; }
+  .slide-card ul, .slide-card ol { padding-left: 22px; }
+  .slide-card pre {
+    font-size: 0.78rem;
+    padding: 12px 14px;
+    border-radius: 8px;
+    line-height: 1.5;
+    margin: 14px 0;
+  }
+  .slide-card code:not(pre code) { font-size: 0.85em; padding: 1px 5px; }
+  .slide-card blockquote {
+    padding: 10px 14px;
+    margin: 14px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .slide-card blockquote.try::before,
+  .slide-card blockquote.hint::before,
+  .slide-card blockquote.note::before {
+    font-size: 0.88em;
+    margin-bottom: 4px;
+  }
+  .slide-card .table-scroll { margin: 12px -4px; }
+  .slide-card table { font-size: 0.85rem; min-width: 100%; }
+  .slide-card th, .slide-card td { padding: 6px 10px; white-space: nowrap; }
+
+  .slide-nav {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "indicator indicator"
+      "prev next";
+    gap: 10px;
+  }
+  .slide-indicator { grid-area: indicator; text-align: center; font-size: 0.9rem; }
+  #prev-btn { grid-area: prev; }
+  #next-btn { grid-area: next; }
+  .btn { padding: 12px 16px; font-size: 0.92rem; min-height: 44px; width: 100%; }
+
+  .site-footer { padding: 24px 16px; font-size: 0.82rem; }
+  .reset-section { margin: 32px 0; }
+}
+
+/* Hover suppression for touch devices (avoid sticky :hover after tap) */
+@media (hover: none) {
+  .chapter-card:hover { transform: none; box-shadow: none; border-color: transparent; }
+  .btn-primary:hover { background: #5d63ff; }
+  .btn-secondary:hover { background: #eef0fa; }
+  .btn-ghost:hover { background: transparent; }
+  a:hover { text-decoration: none; }
 }
