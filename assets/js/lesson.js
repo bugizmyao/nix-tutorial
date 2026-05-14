@@ -119,6 +119,15 @@
       }
     });
 
+    // table を横スクロール用ラッパーで囲む（モバイルでのはみ出し対策）
+    cardEl.querySelectorAll('table').forEach((tbl) => {
+      if (tbl.parentElement.classList.contains('table-scroll')) return;
+      const wrap = document.createElement('div');
+      wrap.className = 'table-scroll';
+      tbl.parentNode.insertBefore(wrap, tbl);
+      wrap.appendChild(tbl);
+    });
+
     // hljs 適用
     if (typeof hljs !== 'undefined') {
       cardEl.querySelectorAll('pre code').forEach((el) => {
