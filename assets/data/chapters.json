@@ -1,0 +1,69 @@
+{
+  "title": "Nix Tutorial",
+  "version": "1.0.0",
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Nixとは何か",
+      "summary": "関数型パッケージマネージャの世界観とHomebrew/asdfとの違い",
+      "file": "ch01.md",
+      "estSlides": 6
+    },
+    {
+      "id": 2,
+      "title": "インストール",
+      "summary": "Determinate Nix Installerで導入、Flakesを有効化する",
+      "file": "ch02.md",
+      "estSlides": 5
+    },
+    {
+      "id": 3,
+      "title": "基本コマンド",
+      "summary": "nix run / nix shell / nix search / nix profile を使い分ける",
+      "file": "ch03.md",
+      "estSlides": 9
+    },
+    {
+      "id": 4,
+      "title": "開発環境を作る",
+      "summary": "nix-shell と nix develop で再現可能なdev環境を",
+      "file": "ch04.md",
+      "estSlides": 9
+    },
+    {
+      "id": 5,
+      "title": "Nix言語入門",
+      "summary": "attrset, let-in, 関数など Nix言語の基礎",
+      "file": "ch05.md",
+      "estSlides": 11
+    },
+    {
+      "id": 6,
+      "title": "Flakes入門",
+      "summary": "flake.nix の構造とinputs/outputs、flake.lock",
+      "file": "ch06.md",
+      "estSlides": 9
+    },
+    {
+      "id": 7,
+      "title": "Flake化された開発環境",
+      "summary": "自分のSES案件dev環境をflake.nixに落とし込む",
+      "file": "ch07.md",
+      "estSlides": 8
+    },
+    {
+      "id": 8,
+      "title": "nix-darwin",
+      "summary": "macOSのシステム設定を宣言的に管理する",
+      "file": "ch08.md",
+      "estSlides": 9
+    },
+    {
+      "id": 9,
+      "title": "home-manager",
+      "summary": "dotfiles（zsh/git/vim/starship）を宣言的に管理する",
+      "file": "ch09.md",
+      "estSlides": 11
+    }
+  ]
+}

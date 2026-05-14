@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nix Tutorial - Progate風スライドで学ぶNix入門</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="page-index">
+  <header class="site-header">
+    <div class="container">
+      <h1><span class="logo">❄</span> Nix Tutorial</h1>
+      <p class="tagline">Progate風スライドで学ぶ Nix / nix-darwin / home-manager 入門</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="overall-progress">
+      <div class="progress-row">
+        <span class="progress-label">全体進捗</span>
+        <span class="progress-text" id="overall-progress-text">0%</span>
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="overall-progress-fill" style="width:0%"></div>
+      </div>
+    </section>
+
+    <section class="chapter-list-section">
+      <h2>章一覧</h2>
+      <ol id="chapter-list" class="chapter-list">
+        <!-- 章リストはJSで動的に挿入 -->
+      </ol>
+    </section>
+
+    <section class="reset-section">
+      <button id="reset-btn" class="btn btn-ghost">進捗をリセット</button>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Nix Tutorial · <a href="https://github.com/bugizmyao/life-repository">GitHub</a></p>
+  </footer>
+
+  <script src="assets/js/progress.js"></script>
+  <script src="assets/js/index.js"></script>
+</body>
+</html>
